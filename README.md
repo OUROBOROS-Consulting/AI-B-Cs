@@ -1,8 +1,8 @@
 # Learn your AI-B-C
 
-Conversations with Anthropic's Claude exploring AI, identity, and cultural nuance.
+Conversations with [Anthropic's Claude](https://github.com/claude) exploring AI, identity, and interesting issues that come up both in theory and in practice.
 
-## Sections
+## The Alphabet
 
 - **A** is for "Applying to Anthropic"
 - **B** is for "Bias"
