@@ -261,6 +261,61 @@
       </div>
     </div>
 
+    <div class="chamfered-card claude-card">
+      <div class="card__interior">
+        <strong style="color: #E8640A">CLAUDE:</strong>
+        <p>Auditing against your stated preferences and the reference sample you provided instead.</p>
+
+        <p><strong>Audit summary</strong></p>
+        <p>Mostly clean and punchy — the reference-sample style comes through. Two phrases are direct slop holdovers from the generation exercise and need to go: "my analytics told me" and "that gap is where apathy lives" were planted intentionally, but they read as AI-LinkedIn even in this leaner context. "Small shifts compound" borders on vague inspirational filler. Everything else earns its place.</p>
+
+        <p><strong>Flag table</strong></p>
+        <table>
+          <tr>
+            <th>Passage</th>
+            <th>Flag type</th>
+            <th>Severity</th>
+            <th>Issue</th>
+          </tr>
+          <tr>
+            <td>"that gap is where apathy lives"</td>
+            <td>AI slop / planted tell</td>
+            <td>High</td>
+            <td>Direct callback to the slop exercise; reads as LinkedIn-AI even stripped of surrounding fluff</td>
+          </tr>
+          <tr>
+            <td>"my analytics told me"</td>
+            <td>AI slop / planted tell</td>
+            <td>High</td>
+            <td>Same — signals AI-generated LinkedIn voice, undercuts the directness of everything around it</td>
+          </tr>
+          <tr>
+            <td>"Small shifts compound."</td>
+            <td>Generic claim</td>
+            <td>Medium</td>
+            <td>True but vague; could be cut or replaced with a concrete example</td>
+          </tr>
+          <tr>
+            <td>"That's the only math that works."</td>
+            <td>Mild filler close</td>
+            <td>Low</td>
+            <td>Slightly over-explains the point already made</td>
+          </tr>
+        </table>
+
+        <p><strong>Revised version</strong></p>
+        <blockquote>
+        Earth Day is one day a year. Awareness peaks on April 22nd — then flatlines by the 23rd. We're not lacking awareness. We're lacking commitment.
+
+        The planet doesn't need your reusable tote once a year. It needs your habits every single day.
+
+        Stop waiting for a designated moment to care. The ocean doesn't. The atmosphere doesn't. Not one day of virtue signaling — but 365 days of deliberate action. Skipping the plastic straw matters less than pressuring the companies that manufacture ten million of them before breakfast.
+
+        Treat every day like Earth Day. That's not idealism. That's arithmetic.
+        </blockquote>
+      </div>
+    </div>
+
   </div>
 </body>
 </html>
