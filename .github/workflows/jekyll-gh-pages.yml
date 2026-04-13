@@ -46,10 +46,11 @@ jobs:
           working-directory: site
 
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
 
       - name: Build with Jekyll
-        run: bundle exec jekyll build --destination "${GITHUB_WORKSPACE}/_site"
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}" --destination "${GITHUB_WORKSPACE}/_site"
         working-directory: site
         env:
           JEKYLL_ENV: production
