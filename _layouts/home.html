@@ -1,0 +1,196 @@
+---
+layout: default
+---
+
+<style>
+  /* ── Hero ── */
+  .hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    gap: 1.5rem;
+  }
+  .hero__eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+  .hero__title {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--text);
+  }
+  .hero__title span { color: var(--gold); }
+  .hero__tagline {
+    max-width: 60ch;
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+  }
+  .hero__tagline strong { color: var(--text); font-weight: 400; }
+
+  /* ── Series grid ── */
+  .series-heading {
+    margin-top: 4rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .series-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+  }
+
+  .series-card {
+    background: var(--surface);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.15s;
+  }
+  .series-card:hover { background: var(--surface-2); }
+
+  .series-card__letter {
+    position: absolute;
+    top: -0.15em;
+    right: 0.1em;
+    font-size: 9rem;
+    font-weight: 700;
+    color: var(--surface-2);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    transition: color 0.15s;
+  }
+  .series-card:hover .series-card__letter { color: #222; }
+
+  .series-card__label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.4rem;
+    position: relative;
+  }
+
+  .series-card__title {
+    font-size: 1.15rem;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    position: relative;
+    line-height: 1.3;
+  }
+
+  .series-card__files {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    position: relative;
+  }
+
+  .series-card__files li::before {
+    content: "–";
+    color: var(--border);
+    margin-right: 0.5rem;
+  }
+
+  .series-card__files a {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    letter-spacing: 0.03em;
+    transition: color 0.1s;
+  }
+  .series-card__files a:hover { color: var(--gold); }
+
+  /* ── Divider rule ── */
+  .rule {
+    width: 2rem;
+    height: 1px;
+    background: var(--gold-dim);
+    margin: 1rem 0;
+  }
+</style>
+
+<!-- Hero -->
+<section class="hero">
+  {% if page.eyebrow %}
+  <p class="hero__eyebrow">{{ page.eyebrow }}</p>
+  {% endif %}
+  <h1 class="hero__title">
+    AI<br><span>A–Z</span>
+  </h1>
+  <div class="rule"></div>
+  {% if page.tagline %}
+  <p class="hero__tagline">{{ page.tagline }}</p>
+  {% endif %}
+</section>
+
+<!-- Series index -->
+{% assign html_files = site.static_files | where_exp: "f", "f.extname == '.html'" | sort: "path" %}
+
+{% if html_files.size > 0 %}
+<h2 class="series-heading">The Series</h2>
+<div class="series-grid">
+
+  {% assign current_dir = "" %}
+  {% assign dir_files = "" | split: "" %}
+
+  {% for file in html_files %}
+    {% assign parts = file.path | split: "/" %}
+    {% assign dir = parts[1] %}
+
+    {% if dir != current_dir %}
+      {% if current_dir != "" %}
+        {% assign dir_parts = current_dir | split: " is for " %}
+        {% assign letter = dir_parts[0] | strip %}
+        {% assign series_name = dir_parts[1] | remove: '"' | strip %}
+        <div class="series-card">
+          <div class="series-card__letter">{{ letter }}</div>
+          <p class="series-card__label">{{ letter }} is for</p>
+          <h3 class="series-card__title">{{ series_name }}</h3>
+          <ul class="series-card__files">
+            {% for f in dir_files %}
+              {% assign fparts = f | split: "/" %}
+              {% assign fname = fparts[2] | remove: ".html" | replace: "_", " " | replace: "00 ", "" | replace: "01 ", "" | replace: "02 ", "" | replace: "03 ", "" | replace: "04 ", "" | replace: "05 ", "" %}
+              <li><a href="{{ f | relative_url }}">{{ fname }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      {% assign current_dir = dir %}
+      {% assign dir_files = "" | split: "" %}
+    {% endif %}
+
+    {% assign dir_files = dir_files | push: file.path %}
+  {% endfor %}
+
+  {% if current_dir != "" %}
+    {% assign dir_parts = current_dir | split: " is for " %}
+    {% assign letter = dir_parts[0] | strip %}
+    {% assign series_name = dir_parts[1] | remove: '"' | strip %}
+    <div class="series-card">
+      <div class="series-card__letter">{{ letter }}</div>
+      <p class="series-card__label">{{ letter }} is for</p>
+      <h3 class="series-card__title">{{ series_name }}</h3>
+      <ul class="series-card__files">
+        {% for f in dir_files %}
+          {% assign fparts = f | split: "/" %}
+          {% assign fname = fparts[2] | remove: ".html" | replace: "_", " " | replace: "00 ", "" | replace: "01 ", "" | replace: "02 ", "" | replace: "03 ", "" | replace: "04 ", "" | replace: "05 ", "" %}
+          <li><a href="{{ f | relative_url }}">{{ fname }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+</div>
+{% endif %}
