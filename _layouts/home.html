@@ -22,7 +22,7 @@ layout: default
     line-height: 1.05;
     color: var(--text);
   }
-  .hero__title span { color: var(--gold); }
+  .hero__title span { color: var(--orange); }
   .hero__tagline {
     max-width: 60ch;
     font-size: 1.05rem;
@@ -56,8 +56,12 @@ layout: default
     position: relative;
     overflow: hidden;
     transition: background 0.15s;
+    border-top: 2px solid transparent;
   }
-  .series-card:hover { background: var(--surface-2); }
+  .series-card:hover {
+    background: var(--surface-2);
+    border-top-color: var(--orange);
+  }
 
   .series-card__letter {
     position: absolute;
@@ -110,13 +114,14 @@ layout: default
     letter-spacing: 0.03em;
     transition: color 0.1s;
   }
-  .series-card__files a:hover { color: var(--gold); }
+  .series-card__files a:hover { color: var(--orange); }
 
   /* ── Divider rule ── */
   .rule {
     width: 2rem;
     height: 1px;
-    background: var(--gold-dim);
+    background: var(--orange);
+    opacity: 0.5;
     margin: 1rem 0;
   }
 </style>
