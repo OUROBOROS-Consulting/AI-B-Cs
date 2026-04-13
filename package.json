@@ -1,0 +1,13 @@
+{
+  "name": "ai-b-c-conversations",
+  "version": "1.0.0",
+  "description": "Conversations with Claude exploring AI, identity, and institutional ethics",
+  "scripts": {
+    "install-design": "npm install",
+    "dev": "jekyll serve",
+    "build": "jekyll build"
+  },
+  "dependencies": {
+    "@OUROBOROS-Consulting/agentic-design": "^1.0.0"
+  }
+}
