@@ -156,12 +156,11 @@ layout: default
 
     {% if dir != current_dir %}
       {% if current_dir != "" %}
-        {% assign dir_parts = current_dir | split: " is for " %}
-        {% assign letter = dir_parts[0] | strip %}
-        {% assign series_name = dir_parts[1] | remove: '"' | strip %}
+        {% assign letter = current_dir %}
+        {% assign series_name = site.data.series[letter] %}
         <div class="series-card">
-          <div class="series-card__letter">{{ letter }}</div>
-          <p class="series-card__label">{{ letter }} is for</p>
+          <div class="series-card__letter">{{ letter | upcase }}</div>
+          <p class="series-card__label">{{ letter | upcase }} is for</p>
           <h3 class="series-card__title">{{ series_name }}</h3>
           <ul class="series-card__files">
             {% for f in dir_files %}
@@ -180,12 +179,11 @@ layout: default
   {% endfor %}
 
   {% if current_dir != "" %}
-    {% assign dir_parts = current_dir | split: " is for " %}
-    {% assign letter = dir_parts[0] | strip %}
-    {% assign series_name = dir_parts[1] | remove: '"' | strip %}
+    {% assign letter = current_dir %}
+    {% assign series_name = site.data.series[letter] %}
     <div class="series-card">
-      <div class="series-card__letter">{{ letter }}</div>
-      <p class="series-card__label">{{ letter }} is for</p>
+      <div class="series-card__letter">{{ letter | upcase }}</div>
+      <p class="series-card__label">{{ letter | upcase }} is for</p>
       <h3 class="series-card__title">{{ series_name }}</h3>
       <ul class="series-card__files">
         {% for f in dir_files %}
