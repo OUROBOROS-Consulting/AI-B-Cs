@@ -4,6 +4,29 @@ Conversations with Anthropic's Claude exploring AI, identity, and cultural nuanc
 
 ## Sections
 
-- **[A is for "Applying to Anthropic"](A%20is%20for%20%22Applying%20to%20Anthropic%22/)** — Why Anthropic matters. Background context, motivations, and a detailed exploration of alignment philosophy.
-
-- **[S is for "Slop"](S%20is%20for%20%22Slop%22/)** — Deconstructing AI-generated text. Analysis of common failure modes, vocabulary tells, structural patterns, and how to identify synthetic writing across platforms.
+- **A** is for "Applying to Anthropic"
+- **B** is for "Bias"
+- **C** is for "Context"
+- **D** is for "Data"
+- **E** is for "Empathy"
+- **F** is for "Fairness"
+- **G** is for "Guardrails"
+- **H** is for "Hallucinations"
+- **I** is for "Interpretation"
+- **J** is for "Justice"
+- **K** is for "Knowledge"
+- **L** is for "Literacy"
+- **M** is for "Models"
+- **N** is for "Nuance"
+- **O** is for "Oversight"
+- **P** is for "Prompt Engineering"
+- **Q** is for "Questions"
+- **R** is for "Reasoning"
+- **S** is for "Slop"
+- **T** is for "Transparency"
+- **U** is for "Understanding"
+- **V** is for "Values"
+- **W** is for "Warnings"
+- **X** is for "X-Ray"
+- **Y** is for "You"
+- **Z** is for "Zero-Shot"
