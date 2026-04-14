@@ -26,8 +26,8 @@ jobs:
       - name: Checkout design system
         uses: actions/checkout@v4
         with:
-          repository: OUROBOROS-Consulting/agentic-design
-          path: agentic-design
+          repository: OUROBOROS-Consulting/ouroboros-design
+          path: ouroboros-design
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
