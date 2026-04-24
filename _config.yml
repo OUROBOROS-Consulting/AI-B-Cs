@@ -4,7 +4,8 @@ contact_url: /intake
 tutoring_url: https://www.wyzant.com/refer/tutor/86925781/?utm_source=TREF&utm_campaign=iphone&utm_content=tutorapp&utm_medium=share
 github_url: https://github.com/astamenos
 linkedin_url: https://www.linkedin.com/in/apostolos-stamenos
-url: "https://ouroborosconsulting.org"
+url: "https://ouroboros-consulting.github.io"
+baseurl: "/AI-B-Cs"
 
 collections:
   services:
