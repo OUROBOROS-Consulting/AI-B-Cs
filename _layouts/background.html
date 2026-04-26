@@ -1,0 +1,125 @@
+---
+layout: default
+---
+
+<style>
+  .bg-page {
+    position: relative;
+  }
+
+  .bg-ghost {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10rem;
+    font-weight: 300;
+    color: var(--orange);
+    opacity: 0.10;
+    position: absolute;
+    top: -1.5rem;
+    right: 0;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .bg-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .bg-eyebrow::before {
+    content: '· ';
+    color: var(--orange);
+  }
+
+  .bg-title {
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+
+  .bg-rule {
+    width: 2rem;
+    height: 2px;
+    background: var(--orange);
+    margin-bottom: 1rem;
+  }
+
+  .bg-lede {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+    border-left: 2px solid var(--orange);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .bg-divider {
+    height: 1px;
+    background: var(--border);
+    border: none;
+    margin-bottom: 2rem;
+  }
+
+  .bg-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+
+  .bg-body h2,
+  .bg-body h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  .bg-body p { margin-bottom: 1rem; }
+  .bg-body strong { color: var(--gold); }
+
+  .bg-back {
+    display: inline-block;
+    margin-top: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: var(--orange);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .bg-back:hover { color: var(--text); }
+</style>
+
+<div class="bg-page">
+  <span class="bg-ghost" aria-hidden="true">{{ page.letter | upcase }}</span>
+
+  <p class="bg-eyebrow">{{ page.letter | upcase }} is for {{ site.data.series[page.letter] }}</p>
+
+  <h1 class="bg-title">{{ page.title }}</h1>
+
+  <div class="bg-rule"></div>
+
+  <p class="bg-lede">{{ page.lede }}</p>
+
+  <hr class="bg-divider">
+
+  <div class="bg-body">
+    {{ content }}
+  </div>
+
+  <a href="/" class="bg-back">← AI A–Z</a>
+</div>
