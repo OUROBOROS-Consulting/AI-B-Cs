@@ -141,59 +141,25 @@ layout: default
 </section>
 
 <!-- Series index -->
-{% assign html_files = site.static_files | where_exp: "f", "f.extname == '.html'" | sort: "path" %}
+{% assign series_pages = site.pages | where_exp: "p", "p.letter" | sort: "path" %}
+{% assign grouped = series_pages | group_by: "letter" %}
 
-{% if html_files.size > 0 %}
+{% if grouped.size > 0 %}
 <h2 class="series-heading">The Series</h2>
 <div class="series-grid">
-
-  {% assign current_dir = "" %}
-  {% assign dir_files = "" | split: "" %}
-
-  {% for file in html_files %}
-    {% assign parts = file.path | split: "/" %}
-    {% assign dir = parts[1] %}
-
-    {% if dir != current_dir %}
-      {% if current_dir != "" %}
-        {% assign letter = current_dir %}
-        {% assign series_name = site.data.series[letter] %}
-        <div class="series-card">
-          <div class="series-card__letter">{{ letter | upcase }}</div>
-          <p class="series-card__label">{{ letter | upcase }} is for</p>
-          <h3 class="series-card__title">{{ series_name }}</h3>
-          <ul class="series-card__files">
-            {% for f in dir_files %}
-              {% assign fparts = f | split: "/" %}
-              {% assign fname = fparts[2] | remove: ".html" | replace: "_", " " | replace: "00 ", "" | replace: "01 ", "" | replace: "02 ", "" | replace: "03 ", "" | replace: "04 ", "" | replace: "05 ", "" %}
-              <li><a href="{{ f | relative_url }}">{{ fname }}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endif %}
-      {% assign current_dir = dir %}
-      {% assign dir_files = "" | split: "" %}
-    {% endif %}
-
-    {% assign dir_files = dir_files | push: file.path %}
-  {% endfor %}
-
-  {% if current_dir != "" %}
-    {% assign letter = current_dir %}
+  {% for group in grouped %}
+    {% assign letter = group.name %}
     {% assign series_name = site.data.series[letter] %}
     <div class="series-card">
       <div class="series-card__letter">{{ letter | upcase }}</div>
       <p class="series-card__label">{{ letter | upcase }} is for</p>
       <h3 class="series-card__title">{{ series_name }}</h3>
       <ul class="series-card__files">
-        {% for f in dir_files %}
-          {% assign fparts = f | split: "/" %}
-          {% assign fname = fparts[2] | remove: ".html" | replace: "_", " " | replace: "00 ", "" | replace: "01 ", "" | replace: "02 ", "" | replace: "03 ", "" | replace: "04 ", "" | replace: "05 ", "" %}
-          <li><a href="{{ f | relative_url }}">{{ fname }}</a></li>
+        {% for p in group.items %}
+          <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
         {% endfor %}
       </ul>
     </div>
-  {% endif %}
-
+  {% endfor %}
 </div>
 {% endif %}
