@@ -57,7 +57,7 @@ hr {
   margin: 2rem 0;
 }
 
-a {
+.card__interior a {
   color: var(--orange);
   text-decoration: underline;
 }
